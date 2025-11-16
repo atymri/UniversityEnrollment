@@ -1,3 +1,4 @@
 <Solution>
   <Project Path="UniversityEnrollment.Core/UniversityEnrollment.Core.csproj" />
+  <Project Path="UniversityEnrollment.Infrastructure/UniversityEnrollment.Infrastructure.csproj" Id="48befeef-df6e-4082-9533-a00100045a18" />
 </Solution>
