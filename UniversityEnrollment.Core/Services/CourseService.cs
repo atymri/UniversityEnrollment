@@ -55,6 +55,7 @@ namespace UniversityEnrollment.Core.Services
                 return Result.Failure<CourseDTO>(CourseErrors.CourseNotFound);
 
             _mapper.Map(updateCourseDto, course);
+            course.Touch();
             await _courseRepository.UpdateAsync(course);
 
             var courseDto = _mapper.Map<CourseDTO>(course);

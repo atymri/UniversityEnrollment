@@ -75,6 +75,7 @@ namespace UniversityEnrollment.Core.Services
                 return Result.Failure<RoleDTO>(RoleErrors.RoleNotFound);
 
             _mapper.Map(updateRoleDto, role);
+            role.Touch();
             await _roleRepository.UpdateAsync(role);
 
             var roleDto = _mapper.Map<RoleDTO>(role);

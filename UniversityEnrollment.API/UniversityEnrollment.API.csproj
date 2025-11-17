@@ -20,8 +20,4 @@
     <ProjectReference Include="..\UniversityEnrollment.Infrastructure\UniversityEnrollment.Infrastructure.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
 </Project>

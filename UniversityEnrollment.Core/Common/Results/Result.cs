@@ -46,18 +46,5 @@ namespace UniversityEnrollment.Core.Common.Results
             : throw new InvalidOperationException("Cannot access the value of a failed result.");
 
         public Result ToResult() => IsSuccess ? Result.Success() : Result.Failure(Error);
-    }
-
-    // ------------------------
-    // Extension helpers
-    // ------------------------
-    public static class ResultExtensions
-    {
-        public static TResult Match<TResult>(this Result result, Func<TResult> onSuccess, Func<Error, TResult> onFailure)
-            => result.IsSuccess ? onSuccess() : onFailure(result.Error);
-
-        public static TResult Match<T, TResult>(this Result<T> result, Func<T, TResult> onSuccess, Func<Error, TResult> onFailure)
-            => result.IsSuccess ? onSuccess(result.Value) : onFailure(result.Error);
-
-    }
+    }           
 }
