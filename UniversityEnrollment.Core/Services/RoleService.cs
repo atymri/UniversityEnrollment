@@ -63,7 +63,7 @@ namespace UniversityEnrollment.Core.Services
 
         public async Task<Result<List<RoleDTO>>> GetUserRolesAsync(Guid userId)
         {
-            var roles = await _roleRepository.GetUserRolesAsync(userId); // فرض بر این است که این متد در repository هست
+            var roles = await _roleRepository.GetUserRolesAsync(userId);
             var roleDtos = _mapper.Map<List<RoleDTO>>(roles);
             return Result.Success(roleDtos);
         }
