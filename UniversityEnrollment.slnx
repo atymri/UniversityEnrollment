@@ -1,4 +1,5 @@
 <Solution>
+  <Project Path="UniversityEnrollment.API/UniversityEnrollment.API.csproj" Id="463cdfcc-e2f5-474a-ad3e-1a90f9a81d62" />
   <Project Path="UniversityEnrollment.Core/UniversityEnrollment.Core.csproj" />
   <Project Path="UniversityEnrollment.Infrastructure/UniversityEnrollment.Infrastructure.csproj" Id="48befeef-df6e-4082-9533-a00100045a18" />
   <Project Path="UniversityEnrollment.Tests/UniversityEnrollment.Tests.csproj" Id="5be72177-3d67-45a5-9591-4feb6a278d35" />
