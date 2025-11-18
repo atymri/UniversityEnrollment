@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace UniversityEnrollment.Core.DTOs.UserDTOs
 {
-    public class CreateUserDTO
+    public class UpdateUserDTO
     {
+        public Guid Id { get; set; }
+
         [Required(ErrorMessage = "First name is required.")]
         [StringLength(50, MinimumLength = 3, ErrorMessage = "First name must be between 3 and 50 characters.")]
         public string FirstName { get; set; } = string.Empty;
@@ -31,8 +33,6 @@ namespace UniversityEnrollment.Core.DTOs.UserDTOs
         [Required(ErrorMessage = "Confirm password is rerquired.")]
         [Compare(nameof(Password), ErrorMessage = "Passwords do not match.")]
         public string ConfirmPassword { get; set; }
-
-        public bool IsTeacher { get; set; }
 
         public DateTime BirthDate { get; set; }
     }

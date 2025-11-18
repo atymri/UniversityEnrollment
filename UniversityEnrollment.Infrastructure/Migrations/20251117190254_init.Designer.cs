@@ -85,7 +85,7 @@ namespace UniversityEnrollment.Infrastructure.Migrations
                     b.ToTable("Enrollments");
                 });
 
-            modelBuilder.Entity("UniversityEnrollment.Core.Domain.Entities.Role", b =>
+            modelBuilder.Entity("UniversityEnrollment.Core.Domain.Entities.ApplicationRole", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -112,7 +112,7 @@ namespace UniversityEnrollment.Infrastructure.Migrations
                     b.ToTable("Roles");
                 });
 
-            modelBuilder.Entity("UniversityEnrollment.Core.Domain.Entities.User", b =>
+            modelBuilder.Entity("UniversityEnrollment.Core.Domain.Entities.ApplicationUser", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -165,7 +165,7 @@ namespace UniversityEnrollment.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("UniversityEnrollment.Core.Domain.Entities.User", "User")
+                    b.HasOne("UniversityEnrollment.Core.Domain.Entities.ApplicationUser", "ApplicationUser")
                         .WithMany("Enrollments")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -173,18 +173,18 @@ namespace UniversityEnrollment.Infrastructure.Migrations
 
                     b.Navigation("Course");
 
-                    b.Navigation("User");
+                    b.Navigation("ApplicationUser");
                 });
 
-            modelBuilder.Entity("UniversityEnrollment.Core.Domain.Entities.User", b =>
+            modelBuilder.Entity("UniversityEnrollment.Core.Domain.Entities.ApplicationUser", b =>
                 {
-                    b.HasOne("UniversityEnrollment.Core.Domain.Entities.Role", "Role")
+                    b.HasOne("UniversityEnrollment.Core.Domain.Entities.ApplicationRole", "ApplicationRole")
                         .WithMany("Users")
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Role");
+                    b.Navigation("ApplicationRole");
                 });
 
             modelBuilder.Entity("UniversityEnrollment.Core.Domain.Entities.Course", b =>
@@ -192,12 +192,12 @@ namespace UniversityEnrollment.Infrastructure.Migrations
                     b.Navigation("Enrollments");
                 });
 
-            modelBuilder.Entity("UniversityEnrollment.Core.Domain.Entities.Role", b =>
+            modelBuilder.Entity("UniversityEnrollment.Core.Domain.Entities.ApplicationRole", b =>
                 {
                     b.Navigation("Users");
                 });
 
-            modelBuilder.Entity("UniversityEnrollment.Core.Domain.Entities.User", b =>
+            modelBuilder.Entity("UniversityEnrollment.Core.Domain.Entities.ApplicationUser", b =>
                 {
                     b.Navigation("Enrollments");
                 });

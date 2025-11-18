@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace UniversityEnrollment.Core.Domain.Entities
 {
-    public class User : BaseEntity<Guid>
+    public class ApplicationUser : IdentityUser<Guid>
     {
         [Required]
         [StringLength(50)]
@@ -19,23 +20,8 @@ namespace UniversityEnrollment.Core.Domain.Entities
         public string LastName { get; set; } = string.Empty;
 
         [Required]
-        [EmailAddress]
-        [StringLength(100)]
-        public string Email { get; set; } = string.Empty;
-
-        [Phone]
-        [StringLength(20)]
-        public string PhoneNumber { get; set; } = string.Empty;
-
-        [Required]
         [DataType(DataType.Date)]
         public DateTime BirthDate { get; set; }
-
-        [Required]
-        public Guid RoleId { get; set; }
-
-        [ForeignKey(nameof(RoleId))]
-        public Role Role { get; set; }
 
         public List<Enrollment> Enrollments { get; set; } = new();
     }

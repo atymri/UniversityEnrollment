@@ -13,10 +13,10 @@ namespace UniversityEnrollment.Core.DTOs.MappingProfiles
     {
         public UserMappingProfile()
         {
-            CreateMap<UserDTO, User>();
-            CreateMap<User, UserDTO>();
-            CreateMap<CreateUserDTO, User>();
-            CreateMap<UpdateUserDTO, User>();
+            CreateMap<UserDTOs.UserDTO, ApplicationUser>();
+            CreateMap<ApplicationUser, UserDTOs.UserDTO>();
+            CreateMap<CreateUserDTO, ApplicationUser>();
+            CreateMap<UpdateUserDTO, ApplicationUser>();
         }
     }
 }

@@ -17,8 +17,5 @@ namespace UniversityEnrollment.Core.DTOs.UserDTOs
         public string PhoneNumber { get; set; } = string.Empty;
 
         public DateTime BirthDate { get; set; }
-
-        public Guid RoleId { get; set; }
-        public string RoleName { get; set; } = string.Empty;
     }
 }
