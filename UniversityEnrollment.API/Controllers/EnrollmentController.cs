@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using UniversityEnrollment.Core.DTOs.EnrollmentDTOs;
 using UniversityEnrollment.Core.ServiceContracts;
 
 namespace UniversityEnrollment.API.Controllers
 {
+    [Authorize(Roles = "Student")]
     public class EnrollmentsController : BaseController
     {
         private readonly IEnrollmentService _enrollmentService;

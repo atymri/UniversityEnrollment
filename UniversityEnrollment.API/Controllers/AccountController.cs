@@ -18,17 +18,20 @@ namespace UniversityEnrollment.API.Controllers
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly RoleManager<ApplicationRole> _roleManager;
         private readonly IMapper _mapper;
+        private readonly IJwtService _jwtService;
 
         public AccountController(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             RoleManager<ApplicationRole> roleManager,
-            IMapper mapper)
+            IMapper mapper,
+            IJwtService jwtService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _roleManager = roleManager;
             _mapper = mapper;
+            _jwtService = jwtService;
         }
 
         [HttpPost("register")]
@@ -73,8 +76,9 @@ namespace UniversityEnrollment.API.Controllers
                     statusCode: StatusCodes.Status500InternalServerError);
             }
 
+            var authResponse = _jwtService.GenerateToken(user);
             var userDto = _mapper.Map<UserDTO>(user);
-            return CreatedAtAction(nameof(GetUserById), new { id = userDto.Id }, userDto);
+            return CreatedAtAction(nameof(GetUserById), new { id = userDto.Id }, authResponse);
         }
 
         [HttpPost("login")]
@@ -103,10 +107,11 @@ namespace UniversityEnrollment.API.Controllers
 
             var roles = await _userManager.GetRolesAsync(user);
             var userDto = _mapper.Map<UserDTO>(user);
+            var authResponse = _jwtService.GenerateToken(user);
 
             var response = new LoginResponseDTO
             {
-                User = userDto,
+                AuthResponse = authResponse,
                 Roles = roles.ToList(),
                 Message = "Login successful"
             };
